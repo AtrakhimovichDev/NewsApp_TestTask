@@ -31,8 +31,9 @@ class NewsTableViewCell: UITableViewCell {
         let imageURLString = article.urlToImage
         let imageArray = images.filter({ $0.imageURL == imageURLString })
         if !imageArray.isEmpty {
-            let img = imageArray.first
-            newsImageView.image = FilesManager.shared.getImage(image: img!)
+            if let img = imageArray.first {
+                newsImageView.image = FilesManager.shared.getImage(image: img)
+            }
         } else {
             newsImageView.image = UIImage(named: "default-news-image")
         }

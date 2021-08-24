@@ -15,25 +15,25 @@ class NewsSettings {
     var articles = [Article]()
     var filteredArticles = [Article]()
 
-    var loadDataComplition: ((News) -> Void)?
-    var updateTableViewComplition: (() -> Void)?
+    var loadDataCompletion: ((News) -> Void)?
+    var updateTableViewCompletion: (() -> Void)?
 
     var images = [Image]() {
         didSet {
-            DispatchQueue.main.async {
-                if let complition = self.updateTableViewComplition {
-                    complition()
+            DispatchQueue.main.async { [weak self] in
+                if let completion = self?.updateTableViewCompletion {
+                    completion()
                 }
             }
         }
     }
 
     init() {
-        loadDataComplition = { news in
+        loadDataCompletion = { news in
             self.articles += news.articles
             self.filteredArticles = self.articles
             DispatchQueue.main.async {
-                if let complition = self.updateTableViewComplition {
+                if let complition = self.updateTableViewCompletion {
                     complition()
                 }
             }
@@ -60,11 +60,7 @@ class NewsSettings {
     }
 
     func needToLoadMoreNews() -> Bool {
-        if daysCount > 7 {
-            return false
-        } else {
-            return true
-        }
+        return daysCount > 7 ? false : true
     }
 
     func resetDateSettings() {
@@ -75,7 +71,7 @@ class NewsSettings {
     private func downloadImages(articles: [Article]) {
         for article in articles {
             if let imageURLString = article.urlToImage {
-                DispatchQueue.global(qos: .userInitiated).async {
+                DispatchQueue.global(qos: .userInitiated).async { [weak self] in
                     do {
                         let URLImage = URL(string: imageURLString)
                         let data = try Data(contentsOf: URLImage!)
@@ -85,7 +81,7 @@ class NewsSettings {
                         FilesManager.shared.saveImage(image: uiImage!, imageName: imageName)
 
                         let imageObj = Image(localeName: imageName, imageURL: imageURLString)
-                        self.images.append(imageObj)
+                        self?.images.append(imageObj)
                     } catch {
                         print(error.localizedDescription)
                     }

@@ -36,7 +36,7 @@ class FilesManager {
             // print(imageURL.path)
             return UIImage(contentsOfFile: imageURL.path) ?? UIImage()
         } else {
-            return UIImage(named: "default-news-image")!
+            return UIImage(named: "default-news-image") ?? UIImage()
         }
     }
 

@@ -10,9 +10,8 @@ import Foundation
 class Image {
     let localeName: String
     let imageURL: String
-    let loaded: Bool = false
 
-    internal init(localeName: String, imageURL: String) {
+    init(localeName: String, imageURL: String) {
         self.imageURL = imageURL
         self.localeName = localeName
     }

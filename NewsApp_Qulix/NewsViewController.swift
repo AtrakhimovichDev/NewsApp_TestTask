@@ -24,7 +24,7 @@ class NewsViewController: UIViewController {
 
     private func setupNewsSettings() {
         newsSettings = NewsSettings()
-        newsSettings.updateTableViewComplition = {
+        newsSettings.updateTableViewCompletion = {
             self.newsTableView.tableFooterView = nil
             self.newsTableView.refreshControl?.endRefreshing()
             self.newsTableView.reloadData()

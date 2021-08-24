@@ -24,7 +24,7 @@ class NewsAPIManager {
         AF.request("https://newsapi.org/v2/everything", parameters: parameters).response { response in
             guard let data = response.data else { return }
             if let news = try? JSONDecoder().decode(News.self, from: data) {
-                if let complition = newsSettings.loadDataComplition {
+                if let complition = newsSettings.loadDataCompletion {
                     complition(news)
                 }
             }
