@@ -24,7 +24,7 @@ class NewsTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
 
-    func fillTableCell(article: Article, images: [Image]) {
+    func fillTableCell(article: ArticleJSON, images: [Image]) {
         titleLabel.text = article.title
         descriptionLabel.text = article.description
         dateLabel.text = getFormattedDate(dateString: article.publishedAt)

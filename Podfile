@@ -6,4 +6,5 @@ target 'NewsApp_Qulix' do
 
   pod 'SwiftLint'
   pod 'Alamofire'
+  pod 'RealmSwift', '~>10'
 end

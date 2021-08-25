@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct News: Decodable {
+struct NewsJSON: Decodable {
     let status: String
-    let articles: [Article]
+    let articles: [ArticleJSON]
 }

@@ -12,7 +12,7 @@ class NewsViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var newsTableView: UITableView!
 
-    private var newsSettings: NewsSettings!
+    private var newsSettings: NewsPresenter!
     private var isSearchActive = false
 
     override func viewDidLoad() {
@@ -24,7 +24,7 @@ class NewsViewController: UIViewController {
     }
 
     private func setupNewsSettings() {
-        newsSettings = NewsSettings()
+        newsSettings = NewsPresenter()
         newsSettings.updateTableViewCompletion = { [weak self] in
             self?.newsTableView.tableFooterView = nil
             self?.newsTableView.refreshControl?.endRefreshing()

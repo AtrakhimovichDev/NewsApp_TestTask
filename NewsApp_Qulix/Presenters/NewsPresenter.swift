@@ -7,15 +7,15 @@
 
 import UIKit
 
-class NewsSettings {
+class NewsPresenter {
 
     var newsDate = Date()
     var daysCount = 1
     var defaultSearchKey = "world news"
-    var articles = [Article]()
-    var filteredArticles = [Article]()
+    var articles = [ArticleJSON]()
+    var filteredArticles = [ArticleJSON]()
 
-    var loadDataCompletion: ((News) -> Void)?
+    var loadDataCompletion: ((NewsJSON) -> Void)?
     var updateTableViewCompletion: (() -> Void)?
 
     var images = [Image]()
@@ -60,7 +60,7 @@ class NewsSettings {
         daysCount = 1
     }
 
-    private func downloadImages(articles: [Article]) {
+    private func downloadImages(articles: [ArticleJSON]) {
         for article in articles {
             if let imageURLString = article.urlToImage {
                 DispatchQueue.global(qos: .userInitiated).async { [weak self] in
