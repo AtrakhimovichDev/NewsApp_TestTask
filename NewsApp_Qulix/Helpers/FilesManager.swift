@@ -33,7 +33,6 @@ class FilesManager {
         let imageURL = imageDirectoryURL.appendingPathComponent(image.localeName)
 
         if fileManager.fileExists(atPath: imageURL.path) {
-            // print(imageURL.path)
             return UIImage(contentsOfFile: imageURL.path) ?? UIImage()
         } else {
             return UIImage(named: "default-news-image") ?? UIImage()

@@ -6,8 +6,12 @@
 //
 
 import Foundation
-import RealmSwift
 
-class NewsModel: Object {
-   // @Persisted var i = 10
+class NewsModel {
+    var currentNewsDate = Date()
+    var daysCount = 1
+    var defaultSearchKey = "world news"
+    var articles = [ArticleModel]()
+    var filteredArticles = [ArticleModel]()
+    var images = [Image]()
 }

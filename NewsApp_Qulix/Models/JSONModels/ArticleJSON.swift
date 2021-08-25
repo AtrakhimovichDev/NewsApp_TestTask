@@ -12,6 +12,5 @@ struct ArticleJSON: Decodable {
     let url: String
     let publishedAt: String
     let description: String?
-    let author: String?
     let urlToImage: String?
 }

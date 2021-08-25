@@ -24,10 +24,10 @@ class NewsTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
 
-    func fillTableCell(article: ArticleJSON, images: [Image]) {
+    func fillTableCell(article: ArticleModel, images: [Image]) {
         titleLabel.text = article.title
         descriptionLabel.text = article.description
-        dateLabel.text = getFormattedDate(dateString: article.publishedAt)
+        dateLabel.text = DateFormatterManager.shared.getStringFromDate(date: article.date)
         let imageURLString = article.urlToImage
         let imageArray = images.filter({ $0.imageURL == imageURLString })
         if !imageArray.isEmpty {
@@ -36,21 +36,6 @@ class NewsTableViewCell: UITableViewCell {
             }
         } else {
             newsImageView.image = UIImage(named: "default-news-image")
-        }
-    }
-
-    private func getFormattedDate(dateString: String) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-        if let date = dateFormatter.date(from: dateString) {
-            dateFormatter.dateFormat = "yyyy-MM-dd"
-            dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
-            let dateStr = dateFormatter.string(from: date)
-            return dateStr
-        } else {
-            dateFormatter.dateFormat = "yyyy-MM-dd"
-            let dateStr = dateFormatter.string(from: Date())
-            return dateStr
         }
     }
 }

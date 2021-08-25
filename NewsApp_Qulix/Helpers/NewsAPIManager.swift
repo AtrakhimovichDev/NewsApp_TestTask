@@ -12,21 +12,17 @@ class NewsAPIManager {
 
     static private var apiKey = "888f3b58079746ef8c68464225f9e143"
 
-    static func getNews(newsSettings: NewsPresenter) {
+    static func getNews(news: NewsModel, searchText: String?, completion: @escaping ((NewsJSON, String?) -> Void)) {
 
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        let date = dateFormatter.string(from: newsSettings.newsDate)
+        let date = DateFormatterManager.shared.getStringFromDate(date: news.currentNewsDate)
         let parameters = ["apiKey": apiKey,
-                          "q": newsSettings.defaultSearchKey,
+                          "q": news.defaultSearchKey,
                           "from": date,
                           "to": date]
         AF.request("https://newsapi.org/v2/everything", parameters: parameters).response { response in
             guard let data = response.data else { return }
             if let news = try? JSONDecoder().decode(NewsJSON.self, from: data) {
-                if let complition = newsSettings.loadDataCompletion {
-                    complition(news)
-                }
+                completion(news, searchText)
             }
         }
     }

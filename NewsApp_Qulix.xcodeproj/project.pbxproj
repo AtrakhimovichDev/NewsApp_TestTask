@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		0D56C1F7D2FA755014D2F469 /* Pods_NewsApp_Qulix.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09213AC27A62198B6158901C /* Pods_NewsApp_Qulix.framework */; };
 		B0189F9026D652F8003FD8B0 /* NewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0189F8F26D652F8003FD8B0 /* NewsModel.swift */; };
+		B0189F9726D65A6B003FD8B0 /* NewsPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0189F9626D65A6B003FD8B0 /* NewsPresenterProtocol.swift */; };
+		B0189F9926D65D5D003FD8B0 /* NewsViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0189F9826D65D5D003FD8B0 /* NewsViewControllerProtocol.swift */; };
+		B0189F9B26D66264003FD8B0 /* ArticleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0189F9A26D66264003FD8B0 /* ArticleModel.swift */; };
+		B0189F9D26D66BC8003FD8B0 /* DateFormatterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0189F9C26D66BC8003FD8B0 /* DateFormatterManager.swift */; };
 		B04D38EA26CE3C58000A604B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04D38E926CE3C58000A604B /* AppDelegate.swift */; };
 		B04D38EC26CE3C58000A604B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04D38EB26CE3C58000A604B /* SceneDelegate.swift */; };
 		B04D38EE26CE3C58000A604B /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04D38ED26CE3C58000A604B /* NewsViewController.swift */; };
@@ -30,7 +34,11 @@
 		09213AC27A62198B6158901C /* Pods_NewsApp_Qulix.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NewsApp_Qulix.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A09827E9ED9FA993D2E9E0C3 /* Pods-NewsApp_Qulix.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewsApp_Qulix.debug.xcconfig"; path = "Target Support Files/Pods-NewsApp_Qulix/Pods-NewsApp_Qulix.debug.xcconfig"; sourceTree = "<group>"; };
 		B0189F8F26D652F8003FD8B0 /* NewsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsModel.swift; sourceTree = "<group>"; };
-		B04D38E626CE3C58000A604B /* NewsApp_Qulix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsApp_Qulix.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B0189F9626D65A6B003FD8B0 /* NewsPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsPresenterProtocol.swift; sourceTree = "<group>"; };
+		B0189F9826D65D5D003FD8B0 /* NewsViewControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewControllerProtocol.swift; sourceTree = "<group>"; };
+		B0189F9A26D66264003FD8B0 /* ArticleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleModel.swift; sourceTree = "<group>"; };
+		B0189F9C26D66BC8003FD8B0 /* DateFormatterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterManager.swift; sourceTree = "<group>"; };
+		B04D38E626CE3C58000A604B /* News.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = News.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B04D38E926CE3C58000A604B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B04D38EB26CE3C58000A604B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		B04D38ED26CE3C58000A604B /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
@@ -99,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				B04D38ED26CE3C58000A604B /* NewsViewController.swift */,
+				B0189F9826D65D5D003FD8B0 /* NewsViewControllerProtocol.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -107,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				B083597E26D4BB79003FE454 /* NewsPresenter.swift */,
+				B0189F9626D65A6B003FD8B0 /* NewsPresenterProtocol.swift */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
@@ -124,7 +134,7 @@
 		B04D38E726CE3C58000A604B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B04D38E626CE3C58000A604B /* NewsApp_Qulix.app */,
+				B04D38E626CE3C58000A604B /* News.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -167,6 +177,7 @@
 			children = (
 				B04D390526CE3F7F000A604B /* JSONModels */,
 				B0189F8F26D652F8003FD8B0 /* NewsModel.swift */,
+				B0189F9A26D66264003FD8B0 /* ArticleModel.swift */,
 				B04D390B26CE64C3000A604B /* Image.swift */,
 			);
 			path = Models;
@@ -177,6 +188,7 @@
 			children = (
 				B04D390F26CE76FF000A604B /* FilesManager.swift */,
 				B04D38FE26CE3EF0000A604B /* NewsAPIManager.swift */,
+				B0189F9C26D66BC8003FD8B0 /* DateFormatterManager.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -210,7 +222,7 @@
 			);
 			name = NewsApp_Qulix;
 			productName = NewsApp_Qulix;
-			productReference = B04D38E626CE3C58000A604B /* NewsApp_Qulix.app */;
+			productReference = B04D38E626CE3C58000A604B /* News.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -325,15 +337,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				B0189F9026D652F8003FD8B0 /* NewsModel.swift in Sources */,
+				B0189F9D26D66BC8003FD8B0 /* DateFormatterManager.swift in Sources */,
 				B04D390926CE4047000A604B /* ArticleJSON.swift in Sources */,
 				B083597C26D36652003FE454 /* NewsTableViewCell.swift in Sources */,
+				B0189F9726D65A6B003FD8B0 /* NewsPresenterProtocol.swift in Sources */,
 				B04D391026CE76FF000A604B /* FilesManager.swift in Sources */,
+				B0189F9926D65D5D003FD8B0 /* NewsViewControllerProtocol.swift in Sources */,
 				B04D390C26CE64C3000A604B /* Image.swift in Sources */,
 				B04D390726CE3FED000A604B /* NewsJSON.swift in Sources */,
 				B04D38EE26CE3C58000A604B /* NewsViewController.swift in Sources */,
 				B04D38FF26CE3EF0000A604B /* NewsAPIManager.swift in Sources */,
 				B04D38EA26CE3C58000A604B /* AppDelegate.swift in Sources */,
 				B083597F26D4BB79003FE454 /* NewsPresenter.swift in Sources */,
+				B0189F9B26D66264003FD8B0 /* ArticleModel.swift in Sources */,
 				B04D38EC26CE3C58000A604B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -490,7 +506,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.atrakhimovich.www.NewsApp-Qulix";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = News;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -510,7 +526,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.atrakhimovich.www.NewsApp-Qulix";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = News;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

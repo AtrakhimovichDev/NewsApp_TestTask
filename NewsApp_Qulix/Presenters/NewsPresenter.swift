@@ -7,57 +7,75 @@
 
 import UIKit
 
-class NewsPresenter {
+class NewsPresenter: NewsPresenterProtocol {
 
-    var newsDate = Date()
-    var daysCount = 1
-    var defaultSearchKey = "world news"
-    var articles = [ArticleJSON]()
-    var filteredArticles = [ArticleJSON]()
+    private var news: NewsModel
+    private var loadDataCompletion: ((NewsJSON, String?) -> Void)?
+    weak var viewController: NewsViewControllerProtocol?
 
-    var loadDataCompletion: ((NewsJSON) -> Void)?
-    var updateTableViewCompletion: (() -> Void)?
-
-    var images = [Image]()
-
-    init() {
-        loadDataCompletion = { news in
-            self.articles += news.articles
-            self.filteredArticles = self.articles
+    init(viewController: NewsViewControllerProtocol) {
+        self.viewController = viewController
+        self.news = NewsModel()
+        self.loadDataCompletion = { (news, searchText) in
+            for article in news.articles {
+                let date = DateFormatterManager.shared.getDateFromString(string: article.publishedAt)
+                let articleModel = ArticleModel(title: article.title,
+                                                url: article.url,
+                                                date: date,
+                                                description: article.description,
+                                                urlToImage: article.urlToImage)
+                self.news.articles.append(articleModel)
+            }
+            if let searchText = searchText,
+               !searchText.isEmpty {
+                self.news.filteredArticles = self.news.articles.filter { $0.title.lowercased().contains(searchText.lowercased()) }
+            } else {
+                self.news.filteredArticles = self.news.articles
+            }
             DispatchQueue.main.async { [weak self] in
-                if let complition = self?.updateTableViewCompletion {
-                    complition()
-                }
+                self?.viewController?.updateTableView()
             }
             self.downloadImages(articles: news.articles)
         }
     }
 
     func clearAllNews() {
-        articles.removeAll()
-        filteredArticles.removeAll()
+        news.articles.removeAll()
+        news.filteredArticles.removeAll()
     }
 
     func changeDateToPreviousDay() {
-        newsDate -= TimeInterval(86400)
-        daysCount += 1
+        news.currentNewsDate -= TimeInterval(86400)
+        news.daysCount += 1
     }
 
     func filterArticles(text: String) {
         if text.isEmpty {
-            filteredArticles = articles
+            news.filteredArticles = news.articles
         } else {
-            filteredArticles = articles.filter { $0.title.lowercased().contains(text.lowercased()) }
+            news.filteredArticles = news.articles.filter { $0.title.lowercased().contains(text.lowercased()) }
         }
     }
 
     func needToLoadMoreNews() -> Bool {
-        return daysCount > 7 ? false : true
+        return news.daysCount > 7 ? false : true
     }
 
     func resetDateSettings() {
-        newsDate = Date()
-        daysCount = 1
+        news.currentNewsDate = Date()
+        news.daysCount = 1
+    }
+
+    func downloadNews(searchText: String?) {
+        NewsAPIManager.getNews(news: news, searchText: searchText, completion: loadDataCompletion!)
+    }
+
+    func getFilteredArticles() -> [ArticleModel] {
+        return news.filteredArticles
+    }
+
+    func getImages() -> [Image] {
+        return news.images
     }
 
     private func downloadImages(articles: [ArticleJSON]) {
@@ -73,7 +91,7 @@ class NewsPresenter {
                         FilesManager.shared.saveImage(image: uiImage!, imageName: imageName)
 
                         let imageObj = Image(localeName: imageName, imageURL: imageURLString)
-                        self?.images.append(imageObj)
+                        self?.news.images.append(imageObj)
                     } catch {
                         print(error.localizedDescription)
                     }
