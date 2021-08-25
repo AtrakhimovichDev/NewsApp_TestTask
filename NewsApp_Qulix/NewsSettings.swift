@@ -18,22 +18,14 @@ class NewsSettings {
     var loadDataCompletion: ((News) -> Void)?
     var updateTableViewCompletion: (() -> Void)?
 
-    var images = [Image]() {
-        didSet {
-            DispatchQueue.main.async { [weak self] in
-                if let completion = self?.updateTableViewCompletion {
-                    completion()
-                }
-            }
-        }
-    }
+    var images = [Image]()
 
     init() {
         loadDataCompletion = { news in
             self.articles += news.articles
             self.filteredArticles = self.articles
-            DispatchQueue.main.async {
-                if let complition = self.updateTableViewCompletion {
+            DispatchQueue.main.async { [weak self] in
+                if let complition = self?.updateTableViewCompletion {
                     complition()
                 }
             }

@@ -13,6 +13,7 @@ class NewsViewController: UIViewController {
     @IBOutlet weak var newsTableView: UITableView!
 
     private var newsSettings: NewsSettings!
+    private var isSearchActive = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,10 +25,10 @@ class NewsViewController: UIViewController {
 
     private func setupNewsSettings() {
         newsSettings = NewsSettings()
-        newsSettings.updateTableViewCompletion = {
-            self.newsTableView.tableFooterView = nil
-            self.newsTableView.refreshControl?.endRefreshing()
-            self.newsTableView.reloadData()
+        newsSettings.updateTableViewCompletion = { [weak self] in
+            self?.newsTableView.tableFooterView = nil
+            self?.newsTableView.refreshControl?.endRefreshing()
+            self?.newsTableView.reloadData()
         }
     }
 
@@ -45,6 +46,20 @@ class NewsViewController: UIViewController {
         newsTableView.delegate = self
         newsTableView.refreshControl = UIRefreshControl()
         newsTableView.refreshControl?.addTarget(self, action: #selector(updateData), for: .valueChanged)
+        newsTableView.addGestureRecognizer(createOutOfSerchTap())
+    }
+
+    private func createOutOfSerchTap() -> UITapGestureRecognizer {
+        let singleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(singleTap))
+        singleTapGestureRecognizer.numberOfTapsRequired = 1
+        singleTapGestureRecognizer.isEnabled = true
+        singleTapGestureRecognizer.cancelsTouchesInView = false
+        return singleTapGestureRecognizer
+    }
+
+    @objc private func singleTap() {
+        isSearchActive = false
+        self.searchBar.endEditing(true)
     }
 
     @objc private func updateData() {
@@ -79,10 +94,11 @@ extension NewsViewController: UITableViewDataSource {
 extension NewsViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row == newsSettings.filteredArticles.count - 1 {
+        if indexPath.row == newsSettings.filteredArticles.count - 1 && !isSearchActive {
             newsSettings.changeDateToPreviousDay()
             if newsSettings.needToLoadMoreNews() {
                 setupActivityIndicator()
+                searchBar.text = ""
                 NewsAPIManager.getNews(newsSettings: newsSettings)
             }
         }
@@ -101,7 +117,13 @@ extension NewsViewController: UITableViewDelegate {
 
 extension NewsViewController: UISearchBarDelegate {
 
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        isSearchActive = false
+        searchBar.endEditing(true)
+    }
+
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        isSearchActive = true
         newsSettings.filterArticles(text: searchText)
         self.newsTableView.reloadData()
     }

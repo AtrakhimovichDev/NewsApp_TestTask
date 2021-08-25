@@ -44,6 +44,7 @@ class NewsTableViewCell: UITableViewCell {
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
         if let date = dateFormatter.date(from: dateString) {
             dateFormatter.dateFormat = "yyyy-MM-dd"
+            dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
             let dateStr = dateFormatter.string(from: date)
             return dateStr
         } else {
