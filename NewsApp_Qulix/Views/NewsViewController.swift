@@ -85,7 +85,8 @@ extension NewsViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         let article = newsPresenter.getFilteredArticles()[indexPath.row]
-        cell.fillTableCell(article: article, images: newsPresenter.getImages())
+        cell.setupCell(article: article)
+        cell.fillTableCell(article: article, news: newsPresenter.getNews())
         return cell
     }
 }
@@ -97,7 +98,6 @@ extension NewsViewController: UITableViewDelegate {
             newsPresenter.changeDateToPreviousDay()
             if newsPresenter.needToLoadMoreNews() {
                 setupActivityIndicator()
-                // searchBar.text = ""
                 newsPresenter.downloadNews(searchText: searchBar.text)
             }
         }

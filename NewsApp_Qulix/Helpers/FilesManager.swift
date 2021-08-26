@@ -28,14 +28,12 @@ class FilesManager {
     }
 
     func getImage(image: Image) -> UIImage {
-        let mainDirectoryURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        let imageDirectoryURL = mainDirectoryURL.appendingPathComponent("Images")
-        let imageURL = imageDirectoryURL.appendingPathComponent(image.localeName)
+        let imageURL = imagesDirectoryURL.appendingPathComponent(image.localeName)
 
         if fileManager.fileExists(atPath: imageURL.path) {
             return UIImage(contentsOfFile: imageURL.path) ?? UIImage()
         } else {
-            return UIImage(named: "default-news-image") ?? UIImage()
+            return getDefaultNewsImage()
         }
     }
 
@@ -50,5 +48,9 @@ class FilesManager {
                 print("Could not clear temp folder: \(error)")
             }
         }
+    }
+
+    func getDefaultNewsImage() -> UIImage {
+        return UIImage(named: "default-news-image") ?? UIImage()
     }
 }

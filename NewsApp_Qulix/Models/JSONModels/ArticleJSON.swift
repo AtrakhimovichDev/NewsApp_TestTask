@@ -8,9 +8,9 @@
 import Foundation
 
 struct ArticleJSON: Decodable {
-    let title: String
-    let url: String
-    let publishedAt: String
+    let title: String?
+    let url: String?
+    let publishedAt: String?
     let description: String?
     let urlToImage: String?
 }

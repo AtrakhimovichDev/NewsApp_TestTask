@@ -14,6 +14,6 @@ protocol NewsPresenterProtocol {
     func changeDateToPreviousDay()
     func filterArticles(text: String)
     func needToLoadMoreNews() -> Bool
+    func getNews() -> NewsModel
     func getFilteredArticles() -> [ArticleModel]
-    func getImages() -> [Image]
 }
