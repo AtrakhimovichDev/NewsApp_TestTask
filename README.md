@@ -21,7 +21,7 @@ pod install
 > Note: if you have Ь1 processor you may have problems with pods instalation. If you are faced with it, try this
 `arch -x86_64 pod install`
 
-App use free news api [Newapi.org](https://newsapi.org/). If you want to run some test, you need to generate your API key.
+App use free news api [Newapi.org](https://newsapi.org/). If you want to run some tests, you need to generate your API key.
 And then paste it in next place:
 
 ```sh
