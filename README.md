@@ -2,7 +2,7 @@
 Newvy is a simple, test news application.
 
 ## Tech
-Xcode version - 12.5
+Xcode version - 12.5  
 iOS version - 14.5
 
 - UIKit
