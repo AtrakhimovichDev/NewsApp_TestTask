@@ -105,7 +105,7 @@ extension NewsViewController: UITableViewDelegate {
 
     private func setupActivityIndicator() {
         let spinner = UIActivityIndicatorView()
-        spinner.style = .medium
+        spinner.style = .large
         spinner.startAnimating()
         spinner.frame = CGRect(x: CGFloat(0), y: CGFloat(0), width: newsTableView.bounds.width, height: CGFloat(44))
 

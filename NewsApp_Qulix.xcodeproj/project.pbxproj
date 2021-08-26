@@ -14,8 +14,9 @@
 		B0189F9B26D66264003FD8B0 /* ArticleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0189F9A26D66264003FD8B0 /* ArticleModel.swift */; };
 		B0189F9D26D66BC8003FD8B0 /* DateFormatterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0189F9C26D66BC8003FD8B0 /* DateFormatterManager.swift */; };
 		B0189F9F26D682A3003FD8B0 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0189F9E26D682A3003FD8B0 /* Reachability.swift */; };
+		B0189FA926D79D66003FD8B0 /* NewsApp_Qulix in Resources */ = {isa = PBXBuildFile; fileRef = B0189FA826D79D66003FD8B0 /* NewsApp_Qulix */; };
+		B0189FAB26D79D7A003FD8B0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0189FAA26D79D7A003FD8B0 /* SceneDelegate.swift */; };
 		B04D38EA26CE3C58000A604B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04D38E926CE3C58000A604B /* AppDelegate.swift */; };
-		B04D38EC26CE3C58000A604B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04D38EB26CE3C58000A604B /* SceneDelegate.swift */; };
 		B04D38EE26CE3C58000A604B /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04D38ED26CE3C58000A604B /* NewsViewController.swift */; };
 		B04D38F126CE3C58000A604B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B04D38EF26CE3C58000A604B /* Main.storyboard */; };
 		B04D38F326CE3C5A000A604B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B04D38F226CE3C5A000A604B /* Assets.xcassets */; };
@@ -40,9 +41,10 @@
 		B0189F9A26D66264003FD8B0 /* ArticleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleModel.swift; sourceTree = "<group>"; };
 		B0189F9C26D66BC8003FD8B0 /* DateFormatterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterManager.swift; sourceTree = "<group>"; };
 		B0189F9E26D682A3003FD8B0 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		B0189FA826D79D66003FD8B0 /* NewsApp_Qulix */ = {isa = PBXFileReference; lastKnownFileType = folder; path = NewsApp_Qulix; sourceTree = "<group>"; };
+		B0189FAA26D79D7A003FD8B0 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		B04D38E626CE3C58000A604B /* Newwy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Newwy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B04D38E926CE3C58000A604B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B04D38EB26CE3C58000A604B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		B04D38ED26CE3C58000A604B /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		B04D38F026CE3C58000A604B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B04D38F226CE3C5A000A604B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -90,7 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				B04D38E926CE3C58000A604B /* AppDelegate.swift */,
-				B04D38EB26CE3C58000A604B /* SceneDelegate.swift */,
+				B0189FAA26D79D7A003FD8B0 /* SceneDelegate.swift */,
 				B04D38F726CE3C5A000A604B /* Info.plist */,
 			);
 			path = Application;
@@ -136,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				B04D38E826CE3C58000A604B /* NewsApp_Qulix */,
+				B0189FA826D79D66003FD8B0 /* NewsApp_Qulix */,
 				B04D38E726CE3C58000A604B /* Products */,
 				F8FE7188764D9B78C82ED30B /* Pods */,
 				3A6042961FE57E39A8B3599B /* Frameworks */,
@@ -275,6 +278,7 @@
 			files = (
 				B04D38F626CE3C5A000A604B /* LaunchScreen.storyboard in Resources */,
 				B04D38F326CE3C5A000A604B /* Assets.xcassets in Resources */,
+				B0189FA926D79D66003FD8B0 /* NewsApp_Qulix in Resources */,
 				B04D38F126CE3C58000A604B /* Main.storyboard in Resources */,
 				B083597D26D36652003FE454 /* NewsTableViewCell.xib in Resources */,
 			);
@@ -354,6 +358,7 @@
 				B0189F9726D65A6B003FD8B0 /* NewsPresenterProtocol.swift in Sources */,
 				B04D391026CE76FF000A604B /* FilesManager.swift in Sources */,
 				B0189F9926D65D5D003FD8B0 /* NewsViewControllerProtocol.swift in Sources */,
+				B0189FAB26D79D7A003FD8B0 /* SceneDelegate.swift in Sources */,
 				B04D390C26CE64C3000A604B /* Image.swift in Sources */,
 				B04D390726CE3FED000A604B /* NewsJSON.swift in Sources */,
 				B04D38EE26CE3C58000A604B /* NewsViewController.swift in Sources */,
@@ -362,7 +367,6 @@
 				B083597F26D4BB79003FE454 /* NewsPresenter.swift in Sources */,
 				B0189F9B26D66264003FD8B0 /* ArticleModel.swift in Sources */,
 				B0189F9F26D682A3003FD8B0 /* Reachability.swift in Sources */,
-				B04D38EC26CE3C58000A604B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -513,6 +517,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SSDHB2CNTR;
 				INFOPLIST_FILE = NewsApp_Qulix/Application/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -533,6 +538,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SSDHB2CNTR;
 				INFOPLIST_FILE = NewsApp_Qulix/Application/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
