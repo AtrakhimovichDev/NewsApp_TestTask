@@ -1,5 +1,5 @@
-# Newvy
-Newvy is a simple, test news application.
+# Newwy
+Newwy is a simple, test news application.
 
 ## Tech
 Xcode version - 12.5  
