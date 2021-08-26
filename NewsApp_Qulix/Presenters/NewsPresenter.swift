@@ -10,34 +10,11 @@ import UIKit
 class NewsPresenter: NewsPresenterProtocol {
 
     private var news: NewsModel
-    private var loadDataCompletion: ((NewsJSON, String?) -> Void)?
     weak var viewController: NewsViewControllerProtocol?
 
     init(viewController: NewsViewControllerProtocol) {
         self.viewController = viewController
         self.news = NewsModel()
-        self.loadDataCompletion = { (news, searchText) in
-            for article in news.articles {
-                let date = DateFormatterManager.shared.getDateFromString(string: article.publishedAt!)
-                let articleModel = ArticleModel(title: article.title!,
-                                                url: article.url!,
-                                                date: date,
-                                                description: article.description,
-                                                urlToImage: article.urlToImage)
-                self.news.articles.append(articleModel)
-            }
-            if let searchText = searchText,
-               !searchText.isEmpty {
-                self.news.filteredArticles = self.news.articles.filter {
-                    $0.title.lowercased().contains(searchText.lowercased())
-                }
-            } else {
-                self.news.filteredArticles = self.news.articles
-            }
-            DispatchQueue.main.async { [weak self] in
-                self?.viewController?.updateTableView()
-            }
-        }
     }
 
     func clearAllNews() {
@@ -68,7 +45,28 @@ class NewsPresenter: NewsPresenterProtocol {
     }
 
     func downloadNews(searchText: String?) {
-        NetworkRequestManager.getNews(news: news, searchText: searchText, completion: loadDataCompletion!)
+        NetworkRequestManager.getNews(news: news, searchText: searchText) {(news, searchText) in
+            for article in news.articles {
+                let date = DateFormatterManager.shared.getDateFromString(string: article.publishedAt!)
+                let articleModel = ArticleModel(title: article.title!,
+                                                url: article.url!,
+                                                date: date,
+                                                description: article.description,
+                                                urlToImage: article.urlToImage)
+                self.news.articles.append(articleModel)
+            }
+            if let searchText = searchText,
+               !searchText.isEmpty {
+                self.news.filteredArticles = self.news.articles.filter {
+                    $0.title.lowercased().contains(searchText.lowercased())
+                }
+            } else {
+                self.news.filteredArticles = self.news.articles
+            }
+            DispatchQueue.main.async { [weak self] in
+                self?.viewController?.updateTableView()
+            }
+        }
     }
 
     func getFilteredArticles() -> [ArticleModel] {

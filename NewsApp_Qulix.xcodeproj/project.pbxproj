@@ -40,7 +40,7 @@
 		B0189F9A26D66264003FD8B0 /* ArticleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleModel.swift; sourceTree = "<group>"; };
 		B0189F9C26D66BC8003FD8B0 /* DateFormatterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterManager.swift; sourceTree = "<group>"; };
 		B0189F9E26D682A3003FD8B0 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
-		B04D38E626CE3C58000A604B /* News.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = News.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B04D38E626CE3C58000A604B /* Newvy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Newvy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B04D38E926CE3C58000A604B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B04D38EB26CE3C58000A604B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		B04D38ED26CE3C58000A604B /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
@@ -145,7 +145,7 @@
 		B04D38E726CE3C58000A604B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B04D38E626CE3C58000A604B /* News.app */,
+				B04D38E626CE3C58000A604B /* Newvy.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -233,7 +233,7 @@
 			);
 			name = NewsApp_Qulix;
 			productName = NewsApp_Qulix;
-			productReference = B04D38E626CE3C58000A604B /* News.app */;
+			productReference = B04D38E626CE3C58000A604B /* Newvy.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -518,7 +518,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.atrakhimovich.www.NewsApp-Qulix";
-				PRODUCT_NAME = News;
+				PRODUCT_NAME = Newvy;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -538,7 +538,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.atrakhimovich.www.NewsApp-Qulix";
-				PRODUCT_NAME = News;
+				PRODUCT_NAME = Newvy;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
